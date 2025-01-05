@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basketballstarts-76.github.io</title>
+    <!-- Include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #111;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header h1 {
+            color: #95d0b4;
+            font-size: 2em;
+        }
+        
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 200px;
+        }
+
+        .content-container {
+            width: 80%; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-container iframe {
+            width: 100%; 
+            height: 80vh;
+            border: none;
+            border-radius: 10px 10px 0 0; 
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-strip {
+            width: 100%; 
+            background-color: #555; 
+            padding: 5px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 0 0 10px 10px; 
+        }
+
+        .fullscreen-btn {
+            font-size: 1.5em; 
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: #444; 
+        }
+
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #95d0b4;
+            text-decoration: none;
+        }
+    </style>
+	<div id="videoad"></div>
+  
+<script>
+	window.aiptag = window.aiptag || {cmd: []};
+	aiptag.cmd.display = aiptag.cmd.display || [];
+	aiptag.cmd.player = aiptag.cmd.player || [];
+
+	//CMP tool settings
+	aiptag.cmp = {
+		show: true,
+		position: "centered",  //centered, bottom
+		button: true,
+		buttonText: "Privacy settings",
+		buttonPosition: "bottom-left" //bottom-left, bottom-right, bottom-center, top-left, top-right
+	}
+	aiptag.cmd.player.push(function() {
+		aiptag.adplayer = new aipPlayer({
+			AD_WIDTH: 960,
+			AD_HEIGHT: 540,
+			AD_DISPLAY: 'center', //default, fullscreen, fill, center, modal-center
+			LOADING_TEXT: 'loading advertisement',
+			PREROLL_ELEM: function(){return document.getElementById('videoad')},
+			AIP_COMPLETE: function (state)  {
+				 lesson_detail();
+			}
+		});
+
+			});
+
+		function show_videoad() {
+		//check if the adslib is loaded correctly or blocked by adblockers etc.
+		if (typeof aiptag.adplayer !== 'undefined') {
+			aiptag.cmd.player.push(function() { aiptag.adplayer.startVideoAd(); });
+		} else {
+			//Adlib didnt load this could be due to an adblocker, timeout etc.
+			//Please add your script here that starts the content, this usually is the same script as added in AIP_COMPLETE.
+			alert("Ad Could not be loaded, load your content here");
+			aiptag.adplayer.aipConfig.AIP_COMPLETE();
+		}
+	}
+		</script>
+	<script async src="//api.adinplay.com/libs/aiptag/pub/HFZ/fine-arts.lol/tag.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1 style="cursor: pointer; padding-right:20px;" onclick="window.location.href = '/'">basketballstarts-76.github.io</h1>
+        <nav>
+            <a href="/">Gxmes</a>
+		<a onclick="openIframe(event, 'Apps', '/a')" style="cursor: pointer;">Apps</a>
+        <a onclick="openIframe(event, 'Settings', '/s')" style="cursor: pointer;">Settings</a>
+		<a href="/search">Search</a>
+		<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdi3cR24vUZMm0AMvFd_KJBEJ0O7wFpNKNPBArZWG1JzleDcg/viewform?pli=1">Contact</a>
+        </nav>
+    </header>
+            <center><div id='fine-arts-lol_970x250'>
+		<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('fine-arts-lol_970x250'); });
+		</script>
+	</div></center>
+    <main>
+        <div class="content-container">
+            <iframe id="gameFrame" title="Game" scrolling="no"></iframe>
+            
+            <div class="fullscreen-strip">
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                    <i class="fas fa-expand"></i> 
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 basketballstarts-76.github.io. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function toggleFullscreen() {
+            var iframe = document.getElementById('gameFrame');
+            
+            if (!document.fullscreenElement) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { // Firefox
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { // IE/Edge
+                    iframe.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function base64Decode(str) {
+            try {
+                return decodeURIComponent(atob(str)); 
+            } catch (e) {
+                console.error("Error decoding Base64:", e);
+                return null;
+            }
+        }
+
+        window.onload = function() {
+            const encodedGameUrl = getQueryParam('game');  
+            
+            if (encodedGameUrl) {
+                const iframe = document.getElementById('gameFrame');
+                const decodedUrl = base64Decode(encodedGameUrl);  
+                
+                if (decodedUrl) {
+                    iframe.src = decodedUrl;  
+                } else {
+                    console.error("Failed to decode the game URL.");
+                }
+            } else {
+                console.log("No game URL parameter found in the URL.");
+            }
+              var savedTabName = localStorage.getItem('tabName');
+              var savedTabImage = localStorage.getItem('tabImage');
+              if (savedTabName) {
+                document.title = savedTabName;
+              } else {
+                  document.title = name + " - play now on basketballstarts-76.github.io";
+              }
+              if (savedTabImage) {
+                var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+                link.type = 'image/x-icon';
+                link.rel = 'shortcut icon';
+                link.href = savedTabImage;
+                document.getElementsByTagName('head')[0].appendChild(link);
+              }
+                document.getElementById('gameFrame').focus();
+
+        };
+
+        const name = getQueryParam('name');
+
+        
+
+    </script>
+	<script>
+   
+
+            
+
+            // Manage tab name and icon
+            var savedTabName = localStorage.getItem('tabName');
+            var savedTabImage = localStorage.getItem('tabImage');
+            if (savedTabName) document.title = savedTabName;
+            if (savedTabImage) {
+                var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+                link.type = 'image/x-icon';
+                link.rel = 'shortcut icon';
+                link.href = savedTabImage;
+                document.head.appendChild(link);
+            }
+
+            // Redirect if necessary
+            if (window.self === window.top && localStorage.getItem('blank2') === 'true') {
+                redirectToWebsite();
+            }
+      
+
+        function openIframe(event, title, src) {
+        event.preventDefault();
+        var win = window.open('', title, 'height=649,width=730,screenX=400,screenY=350');
+
+
+        if (win) { 
+            var iframe = win.document.createElement('iframe');
+            iframe.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; border:none; z-index:999999;";
+            iframe.src = src;
+
+            win.document.body.appendChild(iframe);
+        } else {
+            alert('womp womp');
+        }
+    }
+
+    </script>
+	
+</body>
+</html>
