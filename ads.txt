@@ -1,10 +1,11 @@
+
 ##################################
 # AdinPlay.com ads.txt - 2024-12-22
 ##################################
 
-OWNERDOMAIN=fine-arts.lol
+OWNERDOMAIN=agar.team
 MANAGERDOMAIN=adinplay.com
-adinplay.com, HFZ, DIRECT
+adinplay.com, AGT, DIRECT
 
 #Google
 google.com, pub-3282547114800347, RESELLER, f08c47fec0942fa0
